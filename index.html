@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Meu Mapa GeoJSON</title>
+    <title>Mapa de Minas Gerais</title>
     <!-- Inclua os estilos do Leaflet.js -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
     <!-- Importe a biblioteca Leaflet.js -->
@@ -21,19 +21,22 @@
 
     <script>
         // Cria o mapa
-        var map = L.map('map').setView([0, 0], 2); // Coordenadas iniciais e nível de zoom
+        var map = L.map('map').setView([-18.5122, -44.5550], 7); // Coordenadas iniciais e nível de zoom
 
         // Adiciona camada de mapa base
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         }).addTo(map);
 
-        // Carrega o arquivo GeoJSON
+        // Carrega o arquivo GeoJSON de Minas Gerais
         fetch('mapa (1).geojson')
             .then(response => response.json())
             .then(data => {
-                // Adiciona o GeoJSON ao mapa
-                L.geoJSON(data).addTo(map);
+                // Filtra o GeoJSON para conter apenas os dados de Minas Gerais
+                var minasGerais = data.features.filter(feature => feature.properties.state === 'Minas Gerais');
+                
+                // Adiciona o GeoJSON de Minas Gerais ao mapa
+                L.geoJSON(minasGerais).addTo(map);
             });
     </script>
 </body>
