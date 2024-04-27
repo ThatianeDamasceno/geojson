@@ -28,16 +28,8 @@
             attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         }).addTo(map);
 
-        // Carrega o arquivo GeoJSON de Minas Gerais
-        fetch('mapa (1).geojson')
-            .then(response => response.json())
-            .then(data => {
-                // Filtra o GeoJSON para conter apenas os dados de Minas Gerais
-                var minasGerais = data.features.filter(feature => feature.properties.state === 'Minas Gerais');
-                
-                // Adiciona o GeoJSON de Minas Gerais ao mapa
-                L.geoJSON(minasGerais).addTo(map);
-            });
+        // Carrega o arquivo GeoJSON de Minas Gerais e adiciona ao mapa
+        L.geoJSON('mapa (1).geojson').addTo(map);
     </script>
 </body>
 </html>
