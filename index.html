@@ -23,9 +23,9 @@
         // Cria o mapa
         var map = L.map('map').setView([-18.5122, -44.5550], 7); // Coordenadas iniciais e nível de zoom
 
-        // Adiciona camada de mapa base
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        // Adiciona camada de mapa base - Oceano azul escuro
+        L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Base/MapServer/tile/{z}/{y}/{x}', {
+            attribution: '&copy; Esri &mdash; Esri, DeLorme, NAVTEQ'
         }).addTo(map);
 
         // Carrega o arquivo GeoJSON de Minas Gerais e adiciona ao mapa
