@@ -33,8 +33,11 @@
         fetch('mapa (1).geojson')
             .then(response => response.json())
             .then(data => {
+                // Filtra o GeoJSON para conter apenas os dados de Minas Gerais
+                var minasGerais = data.features.filter(feature => feature.properties.state === 'Minas Gerais');
+                
                 // Adiciona o GeoJSON de Minas Gerais ao mapa
-                L.geoJSON(data).addTo(map);
+                L.geoJSON(minasGerais).addTo(map);
             });
     </script>
 </body>
